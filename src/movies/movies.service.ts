@@ -19,16 +19,19 @@ export class MoviesService {
     return movie;
   }
 
-  deleteOne(id: Number) {
+  deleteOne(id: Number): string {
     this.getOne(id); // This will throw an error if the movie does not exist
     this.movies = this.movies.filter((movie) => movie.id !== +id);
+    return `Movie with ID ${id} deleted`;
   }
 
-  create(movieData: CreateMoviesDto) {
+  create(movieData: CreateMoviesDto): Movie {
     this.movies.push({
       id: this.movies.length + 1,
       ...movieData,
     });
+
+    return this.movies[this.movies.length - 1];
   }
 
   updateOne(id: Number, updateData: UpdateMoviesDTO) {
