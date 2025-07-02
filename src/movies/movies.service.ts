@@ -36,9 +36,7 @@ export class MoviesService {
 
   updateOne(id: number, updateData: UpdateMoviesDTO): Movie {
     const movie = this.getOne(id);
-    this.deleteOne(id);
-    const updatedMovie = { ...movie, ...updateData };
-    this.movies.push(updatedMovie);
-    return updatedMovie;
+    Object.assign(movie, updateData);
+    return movie;
   }
 }
