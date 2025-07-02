@@ -46,7 +46,7 @@ export class MoviesController {
   updateMovie(
     @Param('id') movieId: Number,
     @Body() updateData: UpdateMoviesDTO,
-  ) {
+  ): Movie {
     return this.moviesService.updateOne(movieId, updateData);
   }
 }

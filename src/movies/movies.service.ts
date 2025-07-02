@@ -34,9 +34,11 @@ export class MoviesService {
     return this.movies[this.movies.length - 1];
   }
 
-  updateOne(id: Number, updateData: UpdateMoviesDTO) {
+  updateOne(id: Number, updateData: UpdateMoviesDTO): Movie {
     const movie = this.getOne(id);
     this.deleteOne(id);
-    this.movies.push({ ...movie, ...updateData });
+    const updatedMovie = { ...movie, ...updateData };
+    this.movies.push(updatedMovie);
+    return updatedMovie;
   }
 }
